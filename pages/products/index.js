@@ -1,4 +1,6 @@
 import React from 'react'
+import Product from '../../components/Product';
+import Search from '../../components/Search';
 
 export default function Products() {
 
@@ -6,8 +8,8 @@ export default function Products() {
 
   React.useEffect(() => {
   
-    const getApi = async () => {
-      const res = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${'Motorola'}&limit=20`);
+    const getApi = async (search) => {
+      const res = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${search}&limit=20`);
       const newProduct = await res.json();
       setProduct(newProduct.results);
     };
@@ -21,9 +23,17 @@ export default function Products() {
     <div>
       <h1>Products</h1>
       <div>
+        <Search
+          setProduct={setProduct}
+        />
+      </div>
+      <div>
         {product.map(prod => {
           return (
-            <h3>{prod.title}</h3>
+            <Product
+              product = {prod}
+              key={prod.id}
+            />
           )
         })}
       </div>

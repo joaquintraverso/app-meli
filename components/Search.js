@@ -5,31 +5,31 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function Search( {setProduct} ) {
+export default function Search( {setSearch} ) {
   
-  const [search, setSearch]= useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const handleChange= (e) =>{
-    setSearch(e.target.value);
+    setInputValue(e.target.value);
   }
   
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (search.trim().length > 2){
-      setProduct(search);
-      setSearch('');
+    if (inputValue.trim().length > 2){
+      setSearch(inputValue);
+      setInputValue('');
     }
   }
   
   return (
-    <Form className="d-flex">
+    <Form className="d-flex" onSubmit={handleSubmit}>
       <Form.Control
+        value={inputValue}
         type="search"
         placeholder="Busca un producto"
         className="search-input"
         onChange={handleChange}
-        onSubmit={handleSubmit}
       />
       <Button variant="outline-success" onClick={handleSubmit}>
         <FontAwesomeIcon icon={faSearch}/>

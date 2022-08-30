@@ -1,6 +1,8 @@
 import React from 'react'
+import { Container } from 'react-bootstrap';
 import Product from '../../components/Product';
 import Search from '../../components/Search';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Products() {
 
@@ -8,8 +10,8 @@ export default function Products() {
 
   React.useEffect(() => {
   
-    const getApi = async (search) => {
-      const res = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${search}&limit=20`);
+    const getApi = async () => {
+      const res = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${'argentina'}&limit=20`);
       const newProduct = await res.json();
       setProduct(newProduct.results);
     };
@@ -27,8 +29,8 @@ export default function Products() {
           setProduct={setProduct}
         />
       </div>
-      <div>
-        {product.map(prod => {
+      <Container className='d-inline justify-content-center'>
+      {product.map(prod => {
           return (
             <Product
               product = {prod}
@@ -36,7 +38,7 @@ export default function Products() {
             />
           )
         })}
-      </div>
+      </Container>
     </div>
   )
 }

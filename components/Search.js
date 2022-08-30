@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Search( {setProduct} ) {
   
@@ -37,19 +37,3 @@ export default function Search( {setProduct} ) {
     </Form>
   )
 }
-
-/*
-<div>
-<div className="containerInput">
-  <input
-    className="form-control inputBuscar"
-    value={search}
-    placeholder="Buscar productos.."
-    onChange={handleChange}
-  //  onSubmit={handleSubmit}
-  />
-  <button className="btn btn-dark" onClick={handleSubmit} >
-    <FontAwesomeIcon icon={faSearch}/>
-  </button>
-</div>
-</div>*/

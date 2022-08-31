@@ -10,7 +10,7 @@ export default function Product(props) {
 
   return (
     <div>
-      <Card style={{ width: '18rem' }}>
+      <Card style={{height: '380px', width: '300px' }}>
         <Link href={`/products/[id]`} as={`/products/${product.id}`} key={product.id}>
           <Card.Img variant="top" src={img} />
         </Link>

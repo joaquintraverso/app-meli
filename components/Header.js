@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link';
 import Search from './Search';
 
-export default function Header() {
+export default function Header({setSearch}) {
   
   return (
     <div className='header'>
@@ -12,7 +12,9 @@ export default function Header() {
           <img style={{height: '100px', width: '100px' }} src='/img/logo-ml.png'/>
           </Link>
         </div>
-        <Search></Search>
+        <Search
+          setSearch={setSearch}
+        />
       </nav>
     </div>
   )

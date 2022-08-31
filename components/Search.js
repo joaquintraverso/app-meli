@@ -4,8 +4,11 @@ import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useRouter } from 'next/router';
 
 export default function Search( {setSearch} ) {
+
+  const router = useRouter();
   
   const [inputValue, setInputValue] = useState('');
 
@@ -16,7 +19,7 @@ export default function Search( {setSearch} ) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (inputValue.trim().length > 2){
+    if (inputValue.trim().length > 1){
       setSearch(inputValue);
       setInputValue('');
     }

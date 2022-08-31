@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import { Container } from 'react-bootstrap';
 import Product from '../../components/Product';
-import Search from '../../components/Search';
+import Header from '../../components/Header';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useRouter } from 'next/router';
 
 export default function Products() {
+
+  const router = useRouter();
 
   const [search, setSearch]= useState("");
 
@@ -25,16 +28,17 @@ export default function Products() {
 
   return (
     <div>
-      <h1>Products</h1>
+      <h1>Resultados para: {search}</h1>
       <div>
-        <Search
+        <Header
           setSearch={setSearch}
         />
       </div>
-      <Container className='d-inline justify-content-center'>
+      <Container className='row row-cols-3'>
       {product.map(prod => {
           return (
             <Product
+              className='col'
               product = {prod}
               key={prod.id}
             />

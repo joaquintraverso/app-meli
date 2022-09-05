@@ -1,11 +1,14 @@
 import React,{ useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useRouter } from 'next/router';
 
-export default function Search( {setSearch} ) {
+export default function Search() {
+
+  const router = useRouter();
   
   const [inputValue, setInputValue] = useState('');
 
@@ -16,24 +19,25 @@ export default function Search( {setSearch} ) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (inputValue.trim().length > 2){
-      setSearch(inputValue);
+    if (inputValue.trim().length > 1){
+      router.push({
+        pathname: '/search/[input]',
+        query: { input: inputValue },
+      })
       setInputValue('');
     }
   }
   
   return (
-    <Form className="d-flex" onSubmit={handleSubmit}>
+    <Form className="d-flex" onSubmit={handleSubmit} style={{width:'70%', padding:'10px'}}>
       <Form.Control
         value={inputValue}
         type="search"
         placeholder="Busca un producto"
-        className="search-input"
+        className="me-2"
         onChange={handleChange}
       />
-      <Button variant="outline-success" onClick={handleSubmit}>
-        <FontAwesomeIcon icon={faSearch}/>
-      </Button>
+      <Button variant="secondary" onClick={handleSubmit}>Buscar</Button>
     </Form>
   )
 }

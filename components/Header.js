@@ -1,21 +1,15 @@
 import React from 'react'
-import Link from 'next/link';
 import Search from './Search';
+import Navbar from 'react-bootstrap/Navbar';
 
 export default function Header({setSearch}) {
   
   return (
     <div className='header'>
-      <nav className='nav'>
-        <div className='logo'>
-          <Link href='/'>
-          <img style={{height: '100px', width: '100px' }} src='/img/logo-ml.png'/>
-          </Link>
-        </div>
-        <Search
-          setSearch={setSearch}
-        />
-      </nav>
+      <Navbar variant="dark" bg="dark">
+        <Navbar.Brand href="/" style={{padding:'10px'}}>MercadoLibre</Navbar.Brand>
+        <Search/>
+      </Navbar>
     </div>
   )
 }

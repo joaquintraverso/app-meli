@@ -8,7 +8,7 @@ export default function Footer() {
           display: 'flex',
           justifyContent:'center'
         }}>
-        Proyecto final API MercadoLibre Next JS / Desarrollado por Joaquín Traverso
+        API MercadoLibre Next JS / J.T
       </p>
     </div>
   )
